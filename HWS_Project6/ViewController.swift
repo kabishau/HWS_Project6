@@ -75,7 +75,25 @@ class ViewController: UIViewController {
                 views: viewsDictionary
             )
         )
-
+        
+        // alternative anchor approach, more readable but how it handles the landscape orientation like previous approach
+        /*
+        var previous: UILabel?
+        
+        for label in [label1, label2, label3, label4, label5] {
+            label.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+            label.heightAnchor.constraint(equalToConstraint: 88).isActive = true
+            
+            if let previous = previous {
+                label.topAnchor.constraint(equalTo: previous.bottomAnchor, constant: 10).isActive = true
+            } else {
+                label.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true   
+            }
+            
+            previous = label
+        }
+        
+        */
     }
 }
 
