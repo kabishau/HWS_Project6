@@ -6,7 +6,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
        
         let label1 = UILabel()
-        label1.translatesAutoresizingMaskIntoContstraints = false
+        label1.translatesAutoresizingMaskIntoConstraints = false
         label1.backgroundColor = .red
         label1.text = "THESE"
         label1.sizeToFit() //allows label's text fit the label
@@ -58,7 +58,7 @@ class ViewController: UIViewController {
         }
         
         view.addConstraints(
-            NSLayoutConstraints.constraints(
+            NSLayoutConstraint.constraints(
                 withVisualFormat: "V:|[label1]-[label2]-[label3]-[label4]-[label5]", // V - vertical, "-" default 10pt
                 options: [],
                 metrics: nil,
