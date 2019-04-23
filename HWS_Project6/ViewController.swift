@@ -49,7 +49,8 @@ class ViewController: UIViewController {
             view.addConstraints(
                 // converts VFL into an array of constraints
                 NSLayoutConstraint.constraints(
-                    withVisualFormat: "H:|[\(label)]|", // H - horizontal, | - edge of the view, [] edges of label
+                    // H - horizontal, | - edge of the view, [] edges of label
+                    withVisualFormat: "H:|[\(label)]|",
                     options: [],
                     metrics: nil,
                     views: viewsDictionary // key of String type \(label) is used to find the view in dictionary
@@ -57,11 +58,20 @@ class ViewController: UIViewController {
             )
         }
         
+        let metrics = ["labelHeight": 88]
+        
         view.addConstraints(
             NSLayoutConstraint.constraints(
-                withVisualFormat: "V:|[label1]-[label2]-[label3]-[label4]-[label5]", // V - vertical, "-" default 10pt
+                // "V:" - vertical,
+                // "[label1(==88)]" - adds fixed height to view
+                // "[label1(labelHeight)]" - uses metrics item
+                // "[label2(label1)]" - makes equal height
+                // "-" default 10pt
+                // "-(>=10)-|" - adds at least 10pt at the bottom; the way to change default space
+                // "(labelHeight@999)" - sets the priority to 999 instead of default 1000
+                withVisualFormat: "V:|[label1(labelHeight@999)]-[label2(label1)]-[label3(label1)]-[label4(label1)]-[label5(label1)]-(>=10)-|",
                 options: [],
-                metrics: nil,
+                metrics: metrics,
                 views: viewsDictionary
             )
         )
